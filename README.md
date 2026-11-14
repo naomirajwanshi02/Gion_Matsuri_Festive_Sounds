@@ -39,7 +39,7 @@ the top while you listen.
 | `js/player.js` | The sound note strip (play / pause, ±10 s, seek, time left). |
 | `js/data.js` | The two notes and the slide interval (`NOTE_MS`). |
 | `css/app.css` | Mobile-first UI on the Anatomy sepia tokens, same look as Noh_Masks. |
-| `assets/festive-sounds.m4a` | The voice note (35 s). |
+| `assets/festive-sounds.m4a` | The voice note (35 s). The player cuts the last 3 s (`TRIM_END` in `js/player.js`), so it plays for 32 s. |
 | `assets/niwatori-hoko.webp` | The float illustration (source of `target.png`). |
 | `assets/panel-reference-jp.webp` | The Japanese museum panel used for the float facts (see SOURCES.md). |
 | `target.png` / `targets.mind` | The picture to print and its compiled MindAR target (1,713 detection points over 10 scales, 72 tracking points). |
