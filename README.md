@@ -21,9 +21,8 @@ the top while you listen.
    hear the festive sounds of Gion Matsuri, and that this AR experience needs your camera.
 4. **Listen.** Tapping **OK, play the sounds** starts the audio (the tap also unlocks audio on
    phones) and opens:
-   - **Top panel:** two notes, *Niwatori Hoko* (the float) and *Gion Matsuri* (the festival),
-     that slide over one another every **12 seconds**. A thin line counts down to the next
-     slide; the dots or a swipe change it by hand.
+   - **Top panel:** two notes, *Gion Matsuri* (the festival) and then *Niwatori Hoko* (the float),
+     that slide over one another every **12 seconds**. The dots or a swipe change it by hand.
    - **Centre:** the sound note strip, a music-app player with play / pause, back and
      forward 10 s, a seek bar, the time played and the **time left**.
    - **Bottom:** a pill that says whether the picture is still in view. The sound keeps

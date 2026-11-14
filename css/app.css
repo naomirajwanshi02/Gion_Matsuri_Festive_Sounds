@@ -111,24 +111,21 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .notes{flex:1;min-width:0;overflow:hidden;background:var(--glass);pointer-events:auto;touch-action:pan-y}
 .notes.pop{animation:pop .4s var(--anatomy-ease)}
 .track{display:flex;transition:transform .7s cubic-bezier(.65,0,.25,1)}
-.note{flex:0 0 100%;padding:26px 14px 6px;position:relative}
-.note .corner{max-width:48%}
+.note{flex:0 0 100%;padding:14px 14px 4px;position:relative}
 .note h2{margin:0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:22px;line-height:1.1;font-weight:900;color:var(--anatomy-strong)}
 .note h2 small{color:var(--anatomy-red);font-weight:700;font-size:14.5px}
 .note p{margin:5px 0 0;font-size:14px;line-height:1.38}
-.note-foot{display:flex;align-items:center;gap:10px;padding:4px 14px 10px}
+.note-foot{display:flex;align-items:center;justify-content:center;padding:2px 14px 8px}
 .dots{display:flex;gap:6px}
 .dots button{width:22px;height:22px;border:0;padding:0;background:none;display:grid;place-items:center}
 .dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--anatomy-faint);transition:width .3s,background .3s}
 .dots button[aria-selected="true"]::after{width:20px;border-radius:4px;background:var(--anatomy-red)}
-.timer{flex:1;height:2px;background:var(--anatomy-faint);border-radius:2px;overflow:hidden}
-.timer i{display:block;height:100%;width:100%;background:var(--anatomy-mid);transform-origin:left;transform:scaleX(0)}
 
 /* centre: the sound note strip */
 .player{width:100%;max-width:420px;margin:auto 0;padding:26px 16px 14px;background:var(--glass);pointer-events:auto;display:flex;flex-direction:column;gap:6px}
 .player.pop{animation:pop .45s var(--anatomy-ease)}
 .pl-head{display:flex;align-items:center;gap:12px}
-.art{width:56px;height:56px;flex:none;object-fit:cover;object-position:50% 88%;border-radius:6px;background:#fffaf0;box-shadow:0 0 0 1px var(--anatomy-mid)}
+.art{width:56px;height:56px;flex:none;object-fit:contain;padding:2px;border-radius:6px;background:#fff;box-shadow:0 0 0 1px var(--anatomy-mid)}
 .pl-title{flex:1;min-width:0;display:flex;flex-direction:column}
 .pl-title b{font-size:16.5px;font-weight:900;color:var(--anatomy-strong);line-height:1.2}
 .pl-title span{font-size:13px;color:var(--anatomy-red);font-weight:700}

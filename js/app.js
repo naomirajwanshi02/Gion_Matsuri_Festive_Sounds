@@ -118,7 +118,6 @@ function buildNotes(){
   if ($('noteTrack').children.length) return;
   $('noteTrack').innerHTML = NOTES.map((n, i) => `
     <article class="note" id="note${i}" aria-roledescription="slide" aria-label="${i + 1} of ${NOTES.length}">
-      <span class="corner tl">${n.fig}</span><span class="corner tr">${n.tag}</span>
       <h2>${n.title} <small>${n.jp}</small></h2>
       <p>${n.text}</p>
     </article>`).join('');
@@ -138,10 +137,6 @@ function goNote(i){
   $('noteTrack').style.transform = `translateX(${-100 * S.note}%)`;
   NOTES.forEach((_, k) => $(`note${k}`).setAttribute('aria-hidden', k !== S.note));
   $('noteDots').querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-selected', k === S.note));
-  // restart the countdown line under the notes
-  const bar = $('noteTimer');
-  bar.style.transition = 'none'; bar.style.transform = 'scaleX(0)'; void bar.offsetWidth;
-  bar.style.transition = `transform ${NOTE_MS}ms linear`; bar.style.transform = 'scaleX(1)';
   clearTimeout(S.noteT);
   S.noteT = setTimeout(() => { if (S.phase === 'listen') goNote(S.note + 1); }, NOTE_MS);
 }
