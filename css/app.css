@@ -86,10 +86,10 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .frame .sweep{left:10%;right:10%}
 
 /* ================= EXPLANATORY NOTE ================= */
-.welcome{padding:34px 20px 30px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.welcome{padding:22px 12px 22px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:stretch}
 .welcome h1{margin:0;font-size:clamp(28px,8.5vw,36px);line-height:1.05;font-weight:900;color:var(--anatomy-strong)}
-.welcome p{margin:0 auto;max-width:34ch;font-size:15px}
-.welcome p.small{font-size:13px;color:var(--anatomy-muted);max-width:36ch}
+.welcome p{margin:0;max-width:none;width:100%;font-size:15px;text-align:justify;text-align-last:center}
+.welcome p.small{font-size:13px;color:var(--anatomy-muted);max-width:none}
 /* the picture is on white: multiply lets the paper show through */
 .hero{height:150px;object-fit:contain;margin:-6px auto -4px;mix-blend-mode:multiply;animation:bob 3s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-5px) rotate(1.5deg)}}
@@ -163,3 +163,4 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 /* short screens: tighten the explanatory note */
 @media (max-height:700px){.hero{height:96px}.welcome{gap:8px;padding-top:30px}.steps li{padding:6px 8px;font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+*{hyphens:none;-webkit-hyphens:none}
