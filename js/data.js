@@ -5,11 +5,11 @@ export const NOTE_MS = 12000;
 
 export const NOTES = [
   {
-    title: 'Gion Matsuri', jp: '祇園祭 · ぎおんまつり',
+    title: 'Gion Matsuri',
     text: 'Gion Matsuri is Kyoto’s great summer festival, held all through July for more than 1,100 years and famous for its parade of tall, richly decorated floats.',
   },
   {
-    title: 'Niwatori Hoko', jp: '鶏鉾 · にわとりほこ',
+    title: 'Niwatori Hoko',
     text: 'Niwatori Hoko, the “Rooster Float”, is a float in the Gion Matsuri parade. Its back tapestry, woven in Belgium, shows a scene from the Greek epic the Iliad and is one of the oldest of its kind in Japan.',
   },
 ];

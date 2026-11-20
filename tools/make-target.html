@@ -10,12 +10,12 @@
 const log = (t) => { document.getElementById('log').textContent += t + '\n'; };
 async function build(){
   const src = new Image(); src.src = '../assets/niwatori-hoko.webp?' + Date.now(); await src.decode();
-  // flatten onto white (the print is on white paper) at a size MindAR handles well
-  const scale = Math.min(1, 1600 / src.naturalHeight);
+  // the tall thin pole has almost no detail to track: use only the detailed lower half (the float body), at full size, on white
+  const y0 = Math.round(src.naturalHeight * 0.5);
   const c = document.createElement('canvas');
-  c.width = Math.round(src.naturalWidth * scale); c.height = Math.round(src.naturalHeight * scale);
+  c.width = src.naturalWidth; c.height = src.naturalHeight - y0;
   const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
-  g.drawImage(src, 0, 0, c.width, c.height);
+  g.drawImage(src, 0, y0, c.width, c.height, 0, 0, c.width, c.height);
   const png = await new Promise((ok) => c.toBlob(ok, 'image/png'));
   let res = await fetch('/__save?name=target.png', { method: 'POST', body: png });
   log(`target.png ${c.width}×${c.height}: ${res.ok ? 'saved' : 'save failed'}`);
