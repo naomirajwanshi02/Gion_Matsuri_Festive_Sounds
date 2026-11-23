@@ -27,7 +27,7 @@ the top while you listen.
      forward 10 s, a seek bar, the time played and the **time left**.
    - **Bottom:** a pill that says whether the picture is still in view. The sound keeps
      playing either way.
-   - **✕ on the information panel** hides it; the **i** button under the right-hand ✕ brings it back.
+   - **✕ on the information panel** hides it; the **i** button under the right-hand ✕ opens or closes it (it is not highlighted either way).
    - **✕ on the right** pauses and goes back to scanning. The explanatory note has a ✕ that goes back to scanning too.
 
 ## Files

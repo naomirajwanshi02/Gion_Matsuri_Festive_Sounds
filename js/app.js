@@ -146,7 +146,7 @@ function goNote(i){
   S.noteT = setTimeout(() => { if (S.phase === 'listen') goNote(S.note + 1); }, NOTE_MS);
 }
 
-// ✕ on the panel hides the information; the i button under the right-hand ✕ brings it back.
+// ✕ on the panel hides the information; the i button under the right-hand ✕ opens or closes it.
 function setNotes(on){
   $('notes').classList.toggle('gone', !on);
   $('infoBtn').setAttribute('aria-pressed', on);
@@ -177,7 +177,7 @@ function backToScan(){
 $('introClose').addEventListener('click', backToScan);
 $('closeBtn').addEventListener('click', backToScan);
 $('notesClose').addEventListener('click', () => setNotes(false));
-$('infoBtn').addEventListener('click', () => setNotes(true));
+$('infoBtn').addEventListener('click', () => setNotes($('notes').classList.contains('gone')));
 $('errBtn').addEventListener('click', () => { $('err').hidden = true; location.reload(); });
 
 // MindAR's own listeners can throw after a failed camera start; the screen already says what to do.
