@@ -81,8 +81,8 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 @keyframes pop{from{transform:scale(.7);opacity:0}}
 
 
-/* the target is a tall picture (about 43 : 100), so the viewfinder is tall too */
-.frame{width:auto;height:min(60vh,540px);aspect-ratio:43/100}
+/* the target is the float body (863 x 1000), so the viewfinder matches its shape */
+.frame{width:min(78vw,400px);height:auto;aspect-ratio:863/1000}
 .frame .sweep{left:10%;right:10%}
 
 /* ================= EXPLANATORY NOTE ================= */
@@ -111,7 +111,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .notes{flex:1;min-width:0;overflow:hidden;background:var(--glass);pointer-events:auto;touch-action:pan-y}
 .notes.pop{animation:pop .4s var(--anatomy-ease)}
 .track{display:flex;transition:transform .7s cubic-bezier(.65,0,.25,1)}
-.note{flex:0 0 100%;padding:14px 14px 4px;position:relative}
+.note{flex:0 0 100%;padding:14px 44px 4px 14px;position:relative}
 .note h2{margin:0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:22px;line-height:1.1;font-weight:900;color:var(--anatomy-strong)}
 .note h2 small{color:var(--anatomy-red);font-weight:700;font-size:14.5px}
 .note p{margin:5px 0 0;font-size:14px;line-height:1.38}
@@ -164,3 +164,12 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 @media (max-height:700px){.hero{height:96px}.welcome{gap:8px;padding-top:30px}.steps li{padding:6px 8px;font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 *{hyphens:none;-webkit-hyphens:none}
+
+/* small round cross on a plate (intro card, information panel) */
+.xbtn{position:absolute;top:6px;right:6px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;padding:0;
+  background:var(--anatomy-shade-3);color:var(--anatomy-strong);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--anatomy-faint)}
+.xbtn:active{transform:scale(.92)}
+/* information panel hidden: the icon column stays on the right, the i button lights up */
+.notes.gone{display:none}
+.notes.gone ~ .iconcol{margin-left:auto}
+#infoBtn[aria-pressed="false"]{background:var(--anatomy-red);color:#fff8ec;box-shadow:0 0 0 3px #fff8ec99,0 2px 8px #0005}

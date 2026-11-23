@@ -57,7 +57,8 @@ async function openScan(){
   S.phase = 'scan';
   show(null); overlay('hud', false); overlay('guide', true);
   $('scanRetry').hidden = true;
-  if (scanning()){ $('scanStatus').textContent = 'Looking for the picture…'; return; }
+  // the tracker only reports a new "found" when the picture comes back into view
+  if (scanning()){ $('scanStatus').textContent = S.inView ? 'Move away from the picture, then point back at it' : 'Looking for the picture…'; return; }
   $('scanStatus').textContent = 'Starting camera…';
   try {
     await scan($('ar'), { onStatus: (t) => { if (S.phase === 'scan') $('scanStatus').textContent = t; }, onFound, onLost });
@@ -79,7 +80,10 @@ function onFound(){
   overlay('found', true);
   setTimeout(() => { overlay('found', false); openIntro(); }, 1300);
 }
-function onLost(){ S.inView = false; setHint(); }
+function onLost(){
+  S.inView = false; setHint();
+  if (S.phase === 'scan') $('scanStatus').textContent = 'Looking for the picture…';
+}
 
 // ------------------------------------------------------------ 2 · explanatory note
 function openIntro(){
@@ -109,7 +113,8 @@ async function begin(){
   overlay('hud', true);
   pop($('player'));
   buildNotes();
-  goNote(0);
+  S.note = 0;
+  setNotes(true);
   setHint();
 }
 
@@ -141,6 +146,14 @@ function goNote(i){
   S.noteT = setTimeout(() => { if (S.phase === 'listen') goNote(S.note + 1); }, NOTE_MS);
 }
 
+// ✕ on the panel hides the information; the i button under the right-hand ✕ brings it back.
+function setNotes(on){
+  $('notes').classList.toggle('gone', !on);
+  $('infoBtn').setAttribute('aria-pressed', on);
+  clearTimeout(S.noteT);
+  if (on){ pop($('notes')); goNote(S.note); }
+}
+
 function setHint(){
   const h = $('hint');
   if (q.has('preview') || $('ar').classList.contains('preview')){ h.textContent = 'Listening without the camera'; h.classList.remove('live'); return; }
@@ -154,11 +167,17 @@ $('permBtn').addEventListener('click', askCamera);
 $('scanRetry').addEventListener('click', () => { stopScan(); openScan(); });
 $('scanSkip').addEventListener('click', () => { stopScan(); overlay('guide', false); openIntro(); });
 $('goBtn').addEventListener('click', begin);
-$('closeBtn').addEventListener('click', () => {
-  // opened from the Festive Sounds hub: the cross goes back to its scan screen
-  if (q.has('from')){ location.href = 'https://naomirajwanshi02.github.io/Festive_Sounds/'; return; }
-  player.pause(); clearTimeout(S.noteT); overlay('hud', false); openScan();
-});
+// The crosses: opened from the Festive Sounds hub, they go back to its scan screen;
+// otherwise back to this page's own scanner.
+const HUB = 'https://naomirajwanshi02.github.io/Festive_Sounds/';
+function backToScan(){
+  if (q.has('from')){ location.href = HUB; return; }
+  player.pause(); clearTimeout(S.noteT); show(null); overlay('hud', false); openScan();
+}
+$('introClose').addEventListener('click', backToScan);
+$('closeBtn').addEventListener('click', backToScan);
+$('notesClose').addEventListener('click', () => setNotes(false));
+$('infoBtn').addEventListener('click', () => setNotes(true));
 $('errBtn').addEventListener('click', () => { $('err').hidden = true; location.reload(); });
 
 // MindAR's own listeners can throw after a failed camera start; the screen already says what to do.
