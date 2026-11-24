@@ -175,3 +175,5 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 /* the explanatory note's cross sits well inside its panel */
 .welcome .xbtn{top:12px;right:12px}
 .welcome{padding-top:26px}
+/* the crosses inside panels (explanatory note, information panel) are a plain ✕, no circle */
+.xbtn{background:none;box-shadow:none;border-radius:4px}
