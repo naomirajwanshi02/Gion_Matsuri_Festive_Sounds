@@ -177,3 +177,21 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .welcome{padding-top:26px}
 /* the crosses inside panels (explanatory note, information panel) are a plain ✕, no circle */
 .xbtn{background:none;box-shadow:none;border-radius:4px}
+
+/* ===== Explanatory note: same sizes and spacing as the Pagoda intro =====
+   heading clamp(28px,8.5vw,36px) (32px on a 375px phone), plate padding 30/24/26, gap 12,
+   16px body text, 14px steps and fine print, 12px screen margins, cross 8px from the corner */
+#intro.screen{padding-left:calc(var(--safe-l) + 12px);padding-right:calc(var(--safe-r) + 12px)}
+#intro .col{max-width:460px}
+.welcome{padding:30px 24px 26px;gap:12px}
+.welcome h1{font-size:clamp(28px,8.5vw,36px);line-height:1.05}
+.welcome p{font-size:16px;line-height:1.5;text-align:center;text-align-last:auto;text-wrap:pretty}
+.welcome p.small{font-size:14px}
+.hero{display:block;height:auto;max-height:26vh;width:100%;margin:0 auto}
+.steps{margin:4px 0 6px;gap:6px;grid-auto-rows:1fr}
+.steps li{gap:8px;padding:8px 10px;font-size:14px;line-height:1.2}
+.steps li > b{width:24px;height:24px;font-size:14px}
+.welcome .xbtn{top:8px;right:8px;width:40px;height:40px}
+.welcome .xbtn svg{width:22px;height:22px}
+@media (max-height:700px){.hero{max-height:18vh}.welcome{gap:8px;padding-top:24px}.welcome p{font-size:15px}}
+@media (min-width:700px){#intro .col{max-width:580px}.welcome{padding:38px 32px 32px;gap:14px}.welcome p{font-size:18px}}
